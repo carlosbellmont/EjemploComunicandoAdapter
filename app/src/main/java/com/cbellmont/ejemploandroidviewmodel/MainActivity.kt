@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity(), FilmsAdapter.MyInterface {
 
     }
 
-    override fun onItemClicked(position: Int) {
-        Toast.makeText(this, "Has clickado en la posición $position", Toast.LENGTH_SHORT).show()
+    override fun onItemClicked(title: String) {
+        binding.textView.text = title
     }
 
 

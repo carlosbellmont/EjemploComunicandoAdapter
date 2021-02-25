@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class FilmsAdapter(private val films: List<Film>, private val listener: MyInterface) : RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder>() {
 
     interface MyInterface {
-        fun onItemClicked(position : Int)
+        fun onItemClicked(title : String)
     }
 
     class FilmsViewHolder(val root: View, var tvNombre: TextView, var tvIntro: TextView) : RecyclerView.ViewHolder(root)
@@ -30,7 +30,7 @@ class FilmsAdapter(private val films: List<Film>, private val listener: MyInterf
         holder.tvIntro.text = films[position].intro
         holder.tvNombre.text = films[position].name
         holder.root.setOnClickListener {
-            listener.onItemClicked(position)
+            listener.onItemClicked(films[position].name)
         }
     }
 
