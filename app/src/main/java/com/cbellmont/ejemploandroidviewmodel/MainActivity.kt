@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbellmont.ejemploandroidviewmodel.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,12 +21,8 @@ class MainActivity : AppCompatActivity() {
         val model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         //Log.d(MainActivity::class.java.simpleName, "ViewModel iniciado")
 
-        model.downloadFilms()
-
-        model.films.forEach {
-            binding.tvFilms.append("${it.name}\n")
-        }
-
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = FilmsAdapter(model.downloadFilms())
     }
 
 }
