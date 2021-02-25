@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FilmsAdapter(private val films: List<Film>) : RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder>() {
+class FilmsAdapter(private val films: List<Film>, private val activity: MainActivity) : RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder>() {
 
 
-    class FilmsViewHolder(root: View, var tvNombre: TextView, var tvIntro: TextView) : RecyclerView.ViewHolder(root)
+    class FilmsViewHolder(val root: View, var tvNombre: TextView, var tvIntro: TextView) : RecyclerView.ViewHolder(root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.film_layout, parent, false)
@@ -26,5 +27,9 @@ class FilmsAdapter(private val films: List<Film>) : RecyclerView.Adapter<FilmsAd
     override fun onBindViewHolder(holder: FilmsViewHolder, position: Int) {
         holder.tvIntro.text = films[position].intro
         holder.tvNombre.text = films[position].name
+        holder.root.setOnClickListener {
+            activity.escribirToast()
+        }
     }
+
 }

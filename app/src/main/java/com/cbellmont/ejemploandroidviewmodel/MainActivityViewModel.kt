@@ -7,7 +7,7 @@ import kotlinx.coroutines.delay
 class MainActivityViewModel  : ViewModel() {
 
 
-    fun downloadFilms() : MutableList<Film>{
+    fun getFilms() : MutableList<Film>{
         return mutableListOf(
             Film(1, "La Amenaza Fantasma", "aaaa"),
             Film(2, "El Ataque de los Clones", "aaaa"),

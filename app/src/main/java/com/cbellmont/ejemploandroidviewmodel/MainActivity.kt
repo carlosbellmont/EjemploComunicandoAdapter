@@ -1,12 +1,11 @@
 package com.cbellmont.ejemploandroidviewmodel
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbellmont.ejemploandroidviewmodel.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +20,14 @@ class MainActivity : AppCompatActivity() {
         val model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         //Log.d(MainActivity::class.java.simpleName, "ViewModel iniciado")
 
+        val adapter = FilmsAdapter(model.getFilms(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = FilmsAdapter(model.downloadFilms())
+        binding.recyclerView.adapter = adapter
+
+    }
+
+    fun escribirToast(){
+        Toast.makeText(this, "Has clickado", Toast.LENGTH_SHORT).show()
     }
 
 }
