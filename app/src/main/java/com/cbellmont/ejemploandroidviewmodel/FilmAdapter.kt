@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FilmsAdapter(private val films: List<Film>, private val activity: MainActivity) : RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder>() {
+class FilmsAdapter(private val films: List<Film>, private val listener: MyInterface) : RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder>() {
 
+    interface MyInterface {
+        fun onItemClicked(position : Int)
+    }
 
     class FilmsViewHolder(val root: View, var tvNombre: TextView, var tvIntro: TextView) : RecyclerView.ViewHolder(root)
 
@@ -28,7 +30,7 @@ class FilmsAdapter(private val films: List<Film>, private val activity: MainActi
         holder.tvIntro.text = films[position].intro
         holder.tvNombre.text = films[position].name
         holder.root.setOnClickListener {
-            activity.escribirToast()
+            listener.onItemClicked(position)
         }
     }
 

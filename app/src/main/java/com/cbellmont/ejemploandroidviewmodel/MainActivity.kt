@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbellmont.ejemploandroidviewmodel.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+
+
+class MainActivity : AppCompatActivity(), FilmsAdapter.MyInterface {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -26,8 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun escribirToast(){
-        Toast.makeText(this, "Has clickado", Toast.LENGTH_SHORT).show()
+    override fun onItemClicked(position: Int) {
+        Toast.makeText(this, "Has clickado en la posición $position", Toast.LENGTH_SHORT).show()
     }
+
 
 }
